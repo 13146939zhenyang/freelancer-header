@@ -50,7 +50,7 @@ export default function Home() {
 					<div className='w-full h-full flex text-black flex-col justify-between'>
 						<div className='flex flex-col gap-4'>
 							{navbar.map((item, index) => (
-								<a href={item.position}>{item.name}</a>
+								<a href={item.position} key={index}>{item.name}</a>
 							))}
 						</div>
 						<div className='flex gap-4 flex-col'>
