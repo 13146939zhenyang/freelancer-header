@@ -1,10 +1,13 @@
 import React from 'react'
 import { title, navbar } from '@/utils/constants'
+import { FC } from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '../Hoc'
 import { fadeIn, textVariant } from '@/utils/motion'
+import useModalStore from '@/store/drawStore'
 
-const Header = () => {
+const Header:FC = () => {
+	const { openModal } = useModalStore()
 	return (
 		<div className='lg:w-[1200px] w-full flex justify-between items-center lg:py-20 py-10 mx-auto lg:px-0 px-10'>
 			<motion.div className='text-white font-bold lg:text-[70px] text-xl drop-shadow-2xl cursor-pointer' variants={textVariant()} onClick={() => window.scrollTo(0, 0)}>{title.name}</motion.div>
@@ -17,7 +20,7 @@ const Header = () => {
 			</div>
 			<div className='lg:hidden flex items-center gap-2'>
 				<img src="/flag.png" alt="" />
-				<button className='hover:bg-gray-20 text-xs'>Menu</button>
+				<button className='hover:bg-gray-20 text-xs' onClick={openModal}>Menu</button>
 			</div>
 		</div>
 	)

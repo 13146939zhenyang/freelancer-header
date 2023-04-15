@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import { Header, VideoBackground, HomeContent } from '@/components'
+import { Drawer } from 'antd';
+import { navbar } from '@/utils/constants'
+import useModalStore from '@/store/drawStore';
 export default function Home() {
+	const { modalOpen, openModal, closeModal } = useModalStore()
 	return (
 		<>
 			<Head>
@@ -35,6 +40,25 @@ export default function Home() {
 				<section id="projects" className='w-full h-[100vh] lg:py-[150px] flex justify-center'>
 					<div className='lg:w-[1200px] w-full px-10'>projects</div>
 				</section>
+				<Drawer
+					title="Troio"
+					placement="left"
+					width="100%"
+					onClose={closeModal}
+					open={modalOpen}
+				>
+					<div className='w-full h-full flex text-black flex-col justify-between'>
+						<div className='flex flex-col gap-4'>
+							{navbar.map((item, index) => (
+								<a href={item.position}>{item.name}</a>
+							))}
+						</div>
+						<div className='flex gap-4 flex-col'>
+						<button className='w-full border-2 border-gray-400 py-4'>My booking</button>
+						<button className='w-full bg-gray-400 py-4 text-white'>Booking now</button>
+						</div>
+					</div>
+				</Drawer>
 			</main>
 		</>
 	)
