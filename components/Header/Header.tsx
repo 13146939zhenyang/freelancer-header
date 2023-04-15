@@ -13,7 +13,7 @@ const Header:FC = () => {
 			<motion.div className='text-white font-bold lg:text-[70px] text-xl drop-shadow-2xl cursor-pointer' variants={textVariant()} onClick={() => window.scrollTo(0, 0)}>{title.name}</motion.div>
 			<div className='lg:flex items-center text-white text-lg gap-10 hidden'>
 				{navbar.map((item, index) => (
-					<motion.a variants={fadeIn('spring', 'right', index * 0.5, 0.75)} href={item.position} className='drop-shadow-2xl'>
+					<motion.a variants={fadeIn('spring', 'right', index * 0.5, 0.75)} href={item.position} key={index} className='drop-shadow-2xl'>
 						{item.name}
 					</motion.a>
 				))}
